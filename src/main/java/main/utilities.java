@@ -121,13 +121,6 @@ public class utilities {
             closeDBConnection(stmt, con);
         }
 
-//        for debugging
-//        System.out.println("CITEBOOK CONTENTS:");
-//        printList(tmpList);
-//
-//        System.out.println("Solr CONTENTS:");
-//        printList(docs);
-
         // we check that list against the citebook docs list
         for (int x = 0; x < tmpList.size(); x++) {
             int check = 0;
@@ -148,83 +141,4 @@ public class utilities {
             System.out.println(x + ") Title: " + docs.get(x).getTitle());
         }
     }
-
-// <editor-fold defaultstate="collapsed" desc="Some debugging methods. Click on the + sign on the left to edit the code.">
-//curl http://localhost:8983/solr/CitebookSolr/update?commit=true -d "<delete><query>*:*</query></delete>"
-//    public static String sendQueryToCitebook() throws ClassNotFoundException {
-//        Statement stmt = null;
-//        Connection con = null;
-//        String title = new String();
-//        Scanner myObj = new Scanner(System.in);
-//        String query;
-//
-//        System.out.println("Enter query: ");
-//        query = myObj.nextLine();
-//
-//        try {
-//            con = DB_Connection.getConnection();
-//
-//            stmt = con.createStatement();
-//
-//            stmt.execute(query);
-//
-//            ResultSet res = stmt.getResultSet();
-//
-//            while (res.next() == true) {
-//                title = res.getString("title");
-//                System.out.println("Title returned: " + title);
-//            }
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(utilities.class.getName()).log(Level.SEVERE, null, ex);
-//        } finally {
-//            closeDBConnection(stmt, con);
-//        }
-//
-//        return title;
-//    }
-//
-//    public static void getFileFromSolr() throws SolrServerException, IOException {
-//        Scanner myObj;
-//
-//        String query;
-//        String finalQuery;
-//        byte[] bytes;
-//
-//        myObj = new Scanner(System.in);
-//
-//        while (true) {
-//            System.out.println("\nEnter query: ");
-//
-//            query = myObj.nextLine();
-//
-//            bytes = query.getBytes("ISO-8859-7");
-//            finalQuery = new String(bytes, "ISO-8859-7");
-//
-//            if (query.equals("exit")) {
-//                break;
-//            }
-//
-//            System.out.println("Searching for " + finalQuery);
-//
-//            DB_Connection.SendQuery(finalQuery);
-//        }
-//    }
-//
-//    public static void uploadFileToSolr() throws SolrServerException, IOException {
-//        File tmp = new File("C:\\Users\\STALKER\\Desktop\\CSD\\Diploma Thesis\\Thesis_Report_csd4082.pdf");
-//        Documents testDoc = new Documents("Test Document", "Konstantinos", "Just a test nothing more", "#test, #testing", tmp);
-//
-//        ArrayList<Documents> doc_list = new ArrayList();
-//
-//        DB_Connection.Upload(testDoc);
-//        doc_list.add(testDoc);
-//
-//        for (int x = 0; x < doc_list.size(); x++) {
-//            System.out.println("Title: " + doc_list.get(x).getTitle() + " | Author:  " + doc_list.get(x).getAuth() + " | Abstract:  " + doc_list.get(x).getDes()
-//                    + "| Keywords:  " + doc_list.get(x).getKey() + " | Path:  " + doc_list.get(x).getPath());
-//        }
-//
-//    }
-// </editor-fold>
 }
